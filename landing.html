@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<title>Year of the Yeti</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--current CSS styling, need to create seperate file and link--> 
+ <style> 
+    body {
+        background-image: url('yoty1.jpeg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+    div.a {
+        text-align: center;
+        color: coral;
+        font-size: 100px;
+        text-shadow: 3px 3px black;
+    }
+    /* Style navigation menu */
+    .topnav {
+        overflow: hidden;
+        background-color: #333;
+        position: relative;
+    }
+    /* Hide the links inside the navigation menu (except for logo/home) */
+    .topnav #myLinks {
+        display: none;
+    }
+    /* Style navigation menu links */
+    .topnav a {
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+        display: block;
+    }
+    /* Style the hamburger menu */
+    .topnav a.icon {
+        background: rgb(36, 140, 201);
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    /* Add a grey background color on mouse-over */
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    /*Style the active link (or home/logo) */
+    .active {
+        background-color: #04AA6D;
+        opacity: 0.2;
+        color: white;
+    }
+</style>  
+<header>
+<!-- Loads hamburger menu component onto webpage -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="topnav">
+    <a href="#home" class="active">Logo</a>
+    <div id="myLinks">
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
+    <!-- "Hamburger menu"/ "Bar icon" to toggle the navigation links-->
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+    </a>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display == "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block"
+            }
+        }
+    </script>
+</div>
+</header> 
+<body>
+    <div style="background-image: url('yoty1.jpeg');"></div>
+</body>
+<!-- Loads countdown timer into webpage -->
+<div class="a" id="timer"></div.a>
+ <footer>
+
+ </footer>   
+<script>
+    //set date counting down to
+    var countDownDate = new Date("Feb 10, 2022 15:37:25").getTime()
+    //update every one second
+    var x = setInterval(function() {
+        //Get today's date and time
+        var now = new Date().getTime();
+
+        var distance = countDownDate - now;
+
+        //Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 *60 *24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 *60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+        //Display the result in the element with id="timer"
+        document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+        //If countdown is finished display text below
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "DROPPING NOW"
+        }
+    }, 1000)
+</script>
+</html>
